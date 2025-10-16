@@ -152,6 +152,7 @@ export function Terminal() {
             <CommandItem onSelect={() => runCommand(() => router.push("/"))}>Home</CommandItem>
             <CommandItem onSelect={() => runCommand(() => router.push("/blog"))}>Blog</CommandItem>
             <CommandItem onSelect={() => runCommand(() => router.push("/opensource"))}>Open Source</CommandItem>
+            <CommandItem onSelect={() => runCommand(() => router.push("/resume"))}>Resume</CommandItem>
             <CommandItem onSelect={() => runCommand(() => router.push("#projects"))}>Projects</CommandItem>
             <CommandItem onSelect={() => runCommand(() => router.push("#contact"))}>Contact</CommandItem>
           </CommandGroup>

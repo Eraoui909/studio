@@ -1,9 +1,9 @@
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Blog } from "@/components/sections/blog";
-import { Experience } from "@/components/sections/experience";
 import { Services } from "@/components/sections/services";
 import { Contact } from "@/components/sections/contact";
+import { OpenSource } from "@/components/sections/open-source";
 
 export default function Home() {
   return (
@@ -11,7 +11,6 @@ export default function Home() {
       <Hero />
       <Projects />
       <Blog />
-      <Experience />
       <Services />
       <Contact />
     </div>
