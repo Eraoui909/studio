@@ -3,20 +3,14 @@
 
 import * as React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { motion, AnimatePresence } from "framer-motion";
-import { z } from "zod";
+import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personalData, skills as skillsData, hobbies as hobbiesData } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { sendContactEmail } from "@/ai/flows/contact-flow";
+import { type ContactFormInput, ContactFormInputSchema } from "@/lib/types";
 
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required."),
-  email: z.string().email("Invalid email address."),
-  message: z.string().min(1, "Message is required."),
-});
-
-type FormInputs = z.infer<typeof formSchema>;
 
 type HistoryItem = {
   id: number;
@@ -35,17 +29,17 @@ const commands: Record<string, string> = {
 const formSteps = [
   {
     prefix: "whoami:",
-    field: "name" as keyof FormInputs,
+    field: "name" as keyof ContactFormInput,
     placeholder: "Your name...",
   },
   {
     prefix: "contact --email",
-    field: "email" as keyof FormInputs,
+    field: "email" as keyof ContactFormInput,
     placeholder: "Your email...",
   },
   {
     prefix: `echo "..." > inbox.txt`,
-    field: "message" as keyof FormInputs,
+    field: "message" as keyof ContactFormInput,
     placeholder: "Your message...",
     isTextarea: true,
   },
@@ -55,8 +49,8 @@ export function TerminalContactForm() {
   const [step, setStep] = React.useState(0);
   const [history, setHistory] = React.useState<HistoryItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-  const { register, handleSubmit, trigger, formState: { errors }, reset, setValue } = useForm<FormInputs>({
-    resolver: zodResolver(formSchema),
+  const { register, handleSubmit, trigger, formState: { errors }, reset, setValue } = useForm<ContactFormInput>({
+    resolver: zodResolver(ContactFormInputSchema),
   });
   const { toast } = useToast();
   const inputRef = React.useRef<HTMLInputElement & HTMLTextAreaElement>(null);
@@ -101,18 +95,29 @@ export function TerminalContactForm() {
     setHistory(newHistory);
   };
 
-  const onFormSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log("Form submitted:", data);
+  const onFormSubmit: SubmitHandler<ContactFormInput> = async (data) => {
     const finalHistory: HistoryItem[] = [
       ...history,
       { id: Date.now(), type: "input", prefix: `> echo "${data.message}" > inbox.txt`, content: "" },
-      { id: Date.now() + 1, type: "output", content: "✅ Message deployed to inbox." }
     ];
+    
+    try {
+      await sendContactEmail(data);
+      finalHistory.push({ id: Date.now() + 1, type: "output", content: "✅ Message deployed to inbox." });
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+    } catch (error) {
+      finalHistory.push({ id: Date.now() + 1, type: "error", content: "❌ Failed to send message." });
+       toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Could not send message. Please try again later.",
+      });
+    }
+
     setHistory(finalHistory);
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
     setStep(0);
     reset();
   };
