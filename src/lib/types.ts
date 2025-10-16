@@ -14,13 +14,14 @@ export type BlogPost = {
   description: string;
   date: string;
   slug: string;
+  content: string;
 };
 
 export type Experience = {
   role: string;
   company: string;
   period: string;
-  description: string;
+  description:string;
 };
 
 export type Service = {
