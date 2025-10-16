@@ -33,6 +33,13 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/hamza/codecraft",
   },
   {
+    title: "Java Developer Agent",
+    description: "An AI-powered agent that assists developers with Java code generation, debugging, and optimization, streamlining the development workflow.",
+    tags: ["AI", "GenAI", "Java", "Developer Tool"],
+    image: "project5",
+    githubUrl: "https://github.com/hamza/java-agent",
+  },
+  {
     title: "ConnectSphere App",
     description: "A cross-platform mobile app for local community engagement, built using React Native. Focuses on intuitive UX and offline-first functionality.",
     tags: ["React Native", "Firebase", "UX/UI Design"],
