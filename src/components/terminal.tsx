@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
 
@@ -28,9 +28,9 @@ Command.displayName = CommandPrimitive.displayName;
 const CommandDialog = ({ children, ...props }: React.ComponentProps<typeof Dialog>) => {
   return (
     <Dialog {...props}>
-      <Dialog.Content className="overflow-hidden p-0 shadow-lg">
+      <DialogContent className="overflow-hidden p-0 shadow-lg">
         {children}
-      </Dialog.Content>
+      </DialogContent>
     </Dialog>
   );
 };
