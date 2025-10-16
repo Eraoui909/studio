@@ -1,21 +1,26 @@
+
 "use client";
 
 import * as React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { personalData, skills as skillsData, hobbies as hobbiesData } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
-type FormInputs = {
-  name: string;
-  email: string;
-  message: string;
-};
+const formSchema = z.object({
+  name: z.string().min(1, "Name is required."),
+  email: z.string().email("Invalid email address."),
+  message: z.string().min(1, "Message is required."),
+});
+
+type FormInputs = z.infer<typeof formSchema>;
 
 type HistoryItem = {
   id: number;
-  type: "input" | "output";
+  type: "input" | "output" | "error";
   prefix?: string;
   content: string;
 };
@@ -50,7 +55,9 @@ export function TerminalContactForm() {
   const [step, setStep] = React.useState(0);
   const [history, setHistory] = React.useState<HistoryItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-  const { register, handleSubmit, getValues, reset } = useForm<FormInputs>();
+  const { register, handleSubmit, trigger, formState: { errors }, reset } = useForm<FormInputs>({
+    resolver: zodResolver(formSchema),
+  });
   const { toast } = useToast();
   const inputRef = React.useRef<HTMLInputElement & HTMLTextAreaElement>(null);
   const endOfHistoryRef = React.useRef<HTMLDivElement>(null);
@@ -98,7 +105,7 @@ export function TerminalContactForm() {
     console.log("Form submitted:", data);
     const finalHistory: HistoryItem[] = [
       ...history,
-      { id: Date.now(), type: "input", prefix: ">", content: `echo "${data.message}" > inbox.txt` },
+      { id: Date.now(), type: "input", prefix: `> echo "${data.message}" > inbox.txt`, content: "" },
       { id: Date.now() + 1, type: "output", content: "✅ Message deployed to inbox." }
     ];
     setHistory(finalHistory);
@@ -110,7 +117,7 @@ export function TerminalContactForm() {
     reset();
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
       // Allow newline in textarea with Shift+Enter
       if (formSteps[step]?.isTextarea && e.shiftKey) {
@@ -120,8 +127,10 @@ export function TerminalContactForm() {
       e.preventDefault();
       const value = inputValue.trim();
 
+      const currentStepInfo = formSteps[step];
+
       // Handle built-in commands if not in a form step
-      if (step >= formSteps.length || !formSteps[step]) {
+      if (!currentStepInfo) {
          if (value) {
             handleCommand(value);
             setInputValue("");
@@ -129,20 +138,37 @@ export function TerminalContactForm() {
          return;
       }
 
-      const currentStep = formSteps[step];
       const newHistory: HistoryItem[] = [
         ...history,
         {
           id: Date.now(),
           type: "input",
-          prefix: `> ${currentStep.prefix.replace('...', '')}`,
+          prefix: `> ${currentStepInfo.prefix.replace('...', '')}`,
           content: value,
         },
       ];
+      
+      const field = currentStepInfo.field;
+      (register(field) as any).onChange({ target: { value } });
+
+      const isValid = await trigger(field);
+
+      if (!isValid) {
+        const errorMessage = errors[field]?.message;
+        if(errorMessage) {
+          newHistory.push({
+            id: Date.now() + 1,
+            type: "error",
+            content: `Error: ${errorMessage}`,
+          });
+        }
+        setHistory(newHistory);
+        setInputValue("");
+        return;
+      }
+
       setHistory(newHistory);
       
-      (register(currentStep.field) as any).onChange({ target: { value } });
-
       if (step < formSteps.length - 1) {
         setStep(step + 1);
       } else {
@@ -172,7 +198,10 @@ export function TerminalContactForm() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-muted-foreground"
+                className={cn({
+                  "text-muted-foreground": item.type === "output",
+                  "text-destructive": item.type === "error",
+                })}
               >
                 {item.content}
                </motion.div>
