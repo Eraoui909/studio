@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "profile",
+      "description": "Portrait of Hamza Eraoui, a software engineer, smiling.",
+      "imageUrl": "https://picsum.photos/seed/hamza/400/400",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "project1",
+      "description": "Screenshot of a modern web application dashboard with charts and graphs.",
+      "imageUrl": "https://picsum.photos/seed/proj1/600/400",
+      "imageHint": "dashboard analytics"
+    },
+    {
+      "id": "project2",
+      "description": "Image of a code editor with highlighted syntax, representing a development environment.",
+      "imageUrl": "https://picsum.photos/seed/proj2/600/400",
+      "imageHint": "code editor"
+    },
+    {
+      "id": "project3",
+      "description": "Mockup of a sleek mobile application interface shown on a smartphone.",
+      "imageUrl": "https://picsum.photos/seed/proj3/600/400",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "project4",
+      "description": "An abstract geometric pattern representing complex system design.",
+      "imageUrl": "https://picsum.photos/seed/proj4/600/400",
+      "imageHint": "system design"
+    }
+  ]
 }
