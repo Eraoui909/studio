@@ -3,7 +3,7 @@
     {
       "id": "profile",
       "description": "Portrait of Hamza Eraoui, a software engineer, smiling.",
-      "imageUrl": "https://picsum.photos/seed/hamza/400/400",
+      "imageUrl": "/hamza-eraoui.jpeg",
       "imageHint": "man portrait"
     },
     {
