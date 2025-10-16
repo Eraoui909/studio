@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster";
+import { Terminal } from '@/components/terminal';
 
 export const metadata: Metadata = {
   title: 'Hamza Eraoui | Software Engineer',
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          <Terminal />
         </ThemeProvider>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Code, Menu } from "lucide-react"
+import { Code, Menu, Command as CommandIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -18,6 +18,19 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const [isTerminalOpen, setIsTerminalOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setIsTerminalOpen((open) => !open)
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -44,6 +57,13 @@ export function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
+           <Button
+            variant="outline"
+            className="hidden sm:flex"
+            onClick={() => setIsTerminalOpen(true)}
+          >
+            <span className="text-sm text-muted-foreground">Cmd + K</span>
+          </Button>
           <ThemeToggle />
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
