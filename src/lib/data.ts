@@ -16,6 +16,9 @@ export const personalData = {
   resumeUrl: "/resume.pdf",
 };
 
+export const skills = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "GraphQL", "Docker", "System Design"];
+export const hobbies = ["Reading Sci-Fi", "Playing Guitar", "Hiking", "Photography"];
+
 export const projects: Project[] = [
   {
     title: "Project Phoenix",
