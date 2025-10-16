@@ -11,8 +11,8 @@ export default function Home() {
     <div className="container mx-auto max-w-5xl px-4 md:px-8">
       <Hero />
       <Projects />
-      <OpenSource />
       <Blog />
+      <OpenSource />
       <Experience />
       <Services />
       <Contact />
