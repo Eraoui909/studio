@@ -13,7 +13,7 @@ export const personalData = {
       { name: "Email", url: "mailto:hamza@eraoui.dev", icon: Mail },
     ],
   },
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume",
 };
 
 export const skills = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "GraphQL", "Docker", "System Design"];

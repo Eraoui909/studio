@@ -3,7 +3,7 @@ import Link from "next/link";
 import { personalData } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Download, Send } from "lucide-react";
+import { Eye, Send } from "lucide-react";
 
 export function Hero() {
   const profileImage = PlaceHolderImages.find(p => p.id === 'profile');
@@ -23,9 +23,9 @@ export function Hero() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
             <Button asChild size="lg">
-              <Link href={personalData.resumeUrl} target="_blank">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
+              <Link href={personalData.resumeUrl}>
+                <Eye className="mr-2 h-4 w-4" />
+                View Resume
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
