@@ -55,7 +55,7 @@ export function TerminalContactForm() {
   const [step, setStep] = React.useState(0);
   const [history, setHistory] = React.useState<HistoryItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-  const { register, handleSubmit, trigger, formState: { errors }, reset } = useForm<FormInputs>({
+  const { register, handleSubmit, trigger, formState: { errors }, reset, setValue } = useForm<FormInputs>({
     resolver: zodResolver(formSchema),
   });
   const { toast } = useToast();
@@ -149,7 +149,7 @@ export function TerminalContactForm() {
       ];
       
       const field = currentStepInfo.field;
-      (register(field) as any).onChange({ target: { value } });
+      setValue(field, value);
 
       const isValid = await trigger(field);
 
