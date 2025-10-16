@@ -15,6 +15,8 @@ export type BlogPost = {
   date: string;
   slug: string;
   content: string;
+  views?: number;
+  likes?: number;
 };
 
 export type Experience = {
