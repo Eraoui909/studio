@@ -35,6 +35,12 @@
       "description": "Abstract visualization of an AI agent working with Java code.",
       "imageUrl": "https://picsum.photos/seed/proj5/600/400",
       "imageHint": "AI agent"
+    },
+    {
+      "id": "opensource-story",
+      "description": "An abstract background image for the open source section, conveying a sense of community and collaboration.",
+      "imageUrl": "https://picsum.photos/seed/os-story/1200/600",
+      "imageHint": "community code"
     }
   ]
 }

@@ -7,6 +7,11 @@ export type Project = {
   image: string;
   liveUrl?: string;
   githubUrl?: string;
+  logo?: string;
+  problem?: string;
+  contribution?: string;
+  stars?: number;
+  forks?: number;
 };
 
 export type BlogPost = {
