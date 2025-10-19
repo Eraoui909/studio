@@ -11,12 +11,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
-  { href: "/#projects", label: "Projects" },
+  { href: "/#projects", label: "Projects", isSection: true },
   { href: "/blog", label: "Blog" },
   { href: "/opensource", label: "Open Source" },
   { href: "/resume", label: "Resume" },
-  { href: "/#services", label: "Services" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#services", label: "Services", isSection: true },
+  { href: "/#contact", label: "Contact", isSection: true },
 ]
 
 export function Header() {
@@ -35,18 +35,24 @@ export function Header() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (pathname === '/' && href.startsWith('/#')) {
+  const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
+    // If we are on a different page, let the default Link behavior happen.
+    if (pathname !== '/') {
+        setIsMenuOpen(false);
+        return;
+    }
+
+    // If we are on the homepage and the link is a section link
+    if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.substring(2);
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth' });
       }
-      setIsMenuOpen(false);
-    } else {
-      setIsMenuOpen(false);
     }
+    
+    setIsMenuOpen(false);
   };
 
 
@@ -63,16 +69,19 @@ export function Header() {
         </div>
 
         <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavLinkClick(e, link.href)}
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const href = (pathname !== '/' && link.isSection) ? `/${link.href.substring(1)}` : link.href;
+            return (
+              <Link
+                key={link.href}
+                href={href}
+                onClick={(e) => handleNavLinkClick(e, link.href)}
+                className="transition-colors hover:text-foreground/80 text-foreground/60"
+              >
+                {link.label}
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
@@ -101,16 +110,18 @@ export function Header() {
                 <span className="ml-2 font-bold font-headline">Eraoui.dev</span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
-                {navLinks.map((link) => (
+                {navLinks.map((link) => {
+                  const href = (pathname !== '/' && link.isSection) ? `/${link.href.substring(1)}` : link.href;
+                  return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={href}
                     className="text-lg"
                     onClick={(e) => handleNavLinkClick(e, link.href)}
                   >
                     {link.label}
                   </Link>
-                ))}
+                )})}
               </div>
             </SheetContent>
           </Sheet>
