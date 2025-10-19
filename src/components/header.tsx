@@ -1,7 +1,9 @@
+
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Code, Menu, Command as CommandIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -20,6 +22,7 @@ const navLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isTerminalOpen, setIsTerminalOpen] = React.useState(false)
+  const pathname = usePathname()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -31,6 +34,20 @@ export function Header() {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname === '/' && href.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = href.substring(2);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(false);
+    }
+  };
 
 
   return (
@@ -50,6 +67,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavLinkClick(e, link.href)}
               className="transition-colors hover:text-foreground/80 text-foreground/60"
             >
               {link.label}
@@ -88,7 +106,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     className="text-lg"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleNavLinkClick(e, link.href)}
                   >
                     {link.label}
                   </Link>
