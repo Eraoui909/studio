@@ -9,12 +9,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
-  { href: "#projects", label: "Projects" },
+  { href: "/#projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/opensource", label: "Open Source" },
   { href: "/resume", label: "Resume" },
-  { href: "#services", label: "Services" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 export function Header() {
