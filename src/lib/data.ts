@@ -1,4 +1,4 @@
-import type { BlogPost, Experience, Project, Service } from "@/lib/types";
+import type { Experience, Project, Service } from "@/lib/types";
 import { Code, PenTool, Server, Github, Linkedin, Mail } from "lucide-react";
 
 export const personalData = {
@@ -56,36 +56,6 @@ export const projects: Project[] = [
     contribution: "I wrote the entire physics engine from scratch, focusing on performance and ease of use. I also authored the documentation and created a gallery of examples to showcase its capabilities.",
     stars: 2500,
     forks: 450,
-  },
-];
-
-export const blogPosts: BlogPost[] = [
-  {
-    title: "The Art of System Design: A Primer for Engineers",
-    description: "Exploring the foundational principles of designing scalable and resilient software systems. From monoliths to microservices, we cover the essentials.",
-    date: "July 15, 2024",
-    slug: "art-of-system-design",
-    content: "This is a placeholder for a full blog post about system design. System design is the process of defining the architecture, components, modules, interfaces, and data for a system to satisfy specified requirements. System design could be seen as the application of systems theory to product development. There is some overlap with the disciplines of systems analysis, systems architecture and systems engineering.",
-    views: 2840,
-    likes: 150,
-  },
-  {
-    title: "My Journey into Open Source",
-    description: "A personal reflection on contributing to open source, the challenges I faced, and the lessons learned along the way. It's more than just code.",
-    date: "June 02, 2024",
-    slug: "journey-into-open-source",
-    content: "This is a placeholder for a full blog post about my journey into open source. It all started with a small bug I found in a library I was using. I was nervous to submit a pull request, but the maintainers were friendly and helpful. Since then, I've contributed to several projects and even started my own.",
-    views: 1230,
-    likes: 98,
-  },
-  {
-    title: "State Management in Modern React: A Deep Dive",
-    description: "Comparing and contrasting various state management libraries and patterns in the React ecosystem, including Context, Redux, and Zustand.",
-    date: "May 21, 2024",
-    slug: "state-management-react",
-    content: "This is a placeholder for a full blog post about React state management. There are many ways to manage state in a React application. In this post, we'll explore some of the most popular options, including the built-in Context API, Redux, and Zustand. We'll look at the pros and cons of each and help you decide which one is right for your next project.",
-    views: 4501,
-    likes: 320,
   },
 ];
 

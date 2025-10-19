@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/data";
+import { getAllPostSlugs, getPostData } from "@/lib/posts";
+import { format } from 'date-fns';
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }));
+export async function generateStaticParams() {
+  const paths = getAllPostSlugs();
+  return paths;
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = await getPostData(params.slug);
 
   if (!post) {
     notFound();
@@ -20,11 +20,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           {post.title}
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">{post.date}</p>
+        <p className="mt-4 text-lg text-muted-foreground">{format(new Date(post.date), 'MMMM d, yyyy')}</p>
       </div>
-      <div className="prose prose-lg dark:prose-invert mx-auto">
-        <p>{post.content}</p>
-      </div>
+      <div className="prose prose-lg dark:prose-invert mx-auto" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   );
 }

@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { blogPosts } from "@/lib/data";
+import { getSortedPostsData } from "@/lib/posts";
 import { Card, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export default function BlogPage() {
+  const blogPosts = getSortedPostsData();
+
   return (
     <div className="container mx-auto max-w-5xl px-4 py-20 sm:py-32 md:px-8">
       <div className="text-center">
@@ -20,7 +22,7 @@ export default function BlogPage() {
           <Card key={post.slug} className="flex flex-col transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
             <CardHeader className="flex-grow">
               <CardTitle className="font-headline text-xl">{post.title}</CardTitle>
-              <p className="pt-2 text-sm text-muted-foreground">{post.date}</p>
+              <p className="pt-2 text-sm text-muted-foreground">{new Date(post.date).toLocaleDateString()}</p>
               <CardDescription className="pt-4">{post.description}</CardDescription>
             </CardHeader>
             <CardFooter>
