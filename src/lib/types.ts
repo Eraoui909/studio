@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from "lucide-react";
 import { z } from "zod";
 
@@ -45,3 +46,8 @@ export const ContactFormInputSchema = z.object({
 });
 
 export type ContactFormInput = z.infer<typeof ContactFormInputSchema>;
+
+export type SkillCategory = {
+  title: string;
+  items: string[];
+};

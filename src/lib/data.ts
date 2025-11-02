@@ -1,5 +1,5 @@
 
-import type { Experience, Project, Service } from "@/lib/types";
+import type { Experience, Project, Service, SkillCategory } from "@/lib/types";
 import { Code, PenTool, Server, Github, Linkedin, Mail, Globe } from "lucide-react";
 
 export const personalData = {
@@ -18,13 +18,25 @@ export const personalData = {
   resumeUrl: "/resume",
 };
 
-export const skills = [
-  "Java", "Python", "Javascript", "Bash", 
-  "Git", "Docker", "Jenkins", "Gitlab CI", "Maven", "Liquibase",
-  "Model Context Protocol (MCP)", "Langchain", "Transformers", "NLP",
-  "Oracle Cloud Infrastructure (OCI)", "Oracle Database", "SQL", "PLSQL",
-  "Jira", "Confluence", "Gitlab", "Github"
+export const skills: SkillCategory[] = [
+  {
+    title: "Programming Languages",
+    items: ["Java", "Python", "JavaScript", "Bash", "SQL", "PL/SQL"],
+  },
+  {
+    title: "AI & Machine Learning",
+    items: ["Model Context Protocol (MCP)", "LangChain", "Transformers", "NLP"],
+  },
+  {
+    title: "DevOps & Tools",
+    items: ["Git", "Docker", "Jenkins", "GitLab CI", "Maven", "Liquibase", "Jira", "Confluence", "GitHub"],
+  },
+  {
+    title: "Cloud & Databases",
+    items: ["Oracle Cloud Infrastructure (OCI)", "Oracle Database"],
+  },
 ];
+
 export const hobbies = ["Reading Sci-Fi", "Playing Guitar", "Hiking", "Photography"];
 
 export const projects: Project[] = [

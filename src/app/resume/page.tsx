@@ -3,7 +3,7 @@
 
 import { personalData, experience, skills } from "@/lib/data";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Download, GraduationCap, Globe } from "lucide-react";
+import { Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function ResumePage() {
@@ -82,6 +82,22 @@ export default function ResumePage() {
         </section>
 
         <section className="mt-8">
+            <h3 className="text-2xl font-bold font-headline mb-4 border-b pb-2 text-primary">Skills</h3>
+            <div className="space-y-4">
+                {skills.map((category) => (
+                    <div key={category.title}>
+                        <h4 className="font-headline text-md font-semibold mb-2 text-muted-foreground">{category.title}</h4>
+                        <div className="flex flex-wrap gap-2">
+                            {category.items.map((skill) => (
+                                <Badge key={skill} variant="secondary">{skill}</Badge>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section className="mt-8">
             <h3 className="text-2xl font-bold font-headline mb-6 border-b pb-2 text-primary">Education</h3>
              <div className="space-y-4">
                 {experience.filter(item => item.role.includes('Master') || item.role.includes('Bachelor')).map((item, index) => (
@@ -92,15 +108,6 @@ export default function ResumePage() {
                         </div>
                         <p className="text-sm text-muted-foreground">{item.period}</p>
                     </div>
-                ))}
-            </div>
-        </section>
-
-        <section className="mt-8">
-            <h3 className="text-2xl font-bold font-headline mb-4 border-b pb-2 text-primary">Skills</h3>
-            <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                    <Badge key={skill} variant="secondary">{skill}</Badge>
                 ))}
             </div>
         </section>
