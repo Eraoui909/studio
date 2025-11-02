@@ -66,8 +66,19 @@ export default function ResumePage() {
         </header>
 
         <section className="mt-8">
-          <h3 className="text-2xl font-bold font-headline mb-4 border-b pb-2 text-primary">Objective</h3>
-          <p className="text-muted-foreground">{personalData.bio}</p>
+          <h3 className="text-2xl font-bold font-headline mb-6 border-b pb-2 text-primary">Experience</h3>
+          <div className="space-y-6">
+             {experience.filter(item => !item.role.includes('Master') && !item.role.includes('Bachelor')).map((item, index) => (
+              <div key={item.company}>
+                <div className="flex justify-between items-baseline">
+                    <h4 className="font-headline text-lg font-bold">{item.role}</h4>
+                    <p className="text-xs text-muted-foreground font-semibold">{item.period}</p>
+                </div>
+                <p className="font-medium text-primary">{item.company}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-8">
@@ -92,22 +103,6 @@ export default function ResumePage() {
                     <Badge key={skill} variant="secondary">{skill}</Badge>
                 ))}
             </div>
-        </section>
-        
-        <section className="mt-8">
-          <h3 className="text-2xl font-bold font-headline mb-6 border-b pb-2 text-primary">Experience</h3>
-          <div className="space-y-6">
-             {experience.filter(item => !item.role.includes('Master') && !item.role.includes('Bachelor')).map((item, index) => (
-              <div key={item.company}>
-                <div className="flex justify-between items-baseline">
-                    <h4 className="font-headline text-lg font-bold">{item.role}</h4>
-                    <p className="text-xs text-muted-foreground font-semibold">{item.period}</p>
-                </div>
-                <p className="font-medium text-primary">{item.company}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
-          </div>
         </section>
 
       </div>
