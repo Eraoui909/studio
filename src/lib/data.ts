@@ -1,88 +1,78 @@
 import type { Experience, Project, Service } from "@/lib/types";
-import { Code, PenTool, Server, Github, Linkedin, Mail } from "lucide-react";
+import { Code, PenTool, Server, Github, Linkedin, Mail, Globe } from "lucide-react";
 
 export const personalData = {
   name: "Hamza Eraoui",
-  tagline: "Building tools and stories, one commit at a time.",
-  bio: "A creative problem-solver and software engineer passionate about building beautiful, functional, and user-centered applications. I thrive at the intersection of technology, design, and storytelling, transforming complex ideas into elegant realities.",
+  tagline: "Software Engineer",
+  bio: "Software Engineer with 2+ years of experience at Oracle, seeking full-time Software Engineer opportunities to build AI agents and intelligent solutions.",
   contact: {
     email: "hamzaeraoui2000@gmail.com",
     social: [
       { name: "GitHub", url: "https://github.com/Eraoui909", icon: Github },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/hamza-eraoui/", icon: Linkedin },
       { name: "Email", url: "mailto:hamzaeraoui2000@gmail.com", icon: Mail },
+      { name: "Website", url: "https://hamzaeraoui.vercel.app", icon: Globe }
     ],
   },
   resumeUrl: "/resume",
 };
 
-export const skills = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "GraphQL", "Docker", "System Design"];
+export const skills = [
+  "Java", "Python", "Javascript", "Bash", 
+  "Git", "Docker", "Jenkins", "Gitlab CI", "Maven", "Liquibase",
+  "Model Context Protocol (MCP)", "Langchain", "Transformers", "NLP",
+  "Oracle Cloud Infrastructure (OCI)", "Oracle Database", "SQL", "PLSQL",
+  "Jira", "Confluence", "Gitlab", "Github"
+];
 export const hobbies = ["Reading Sci-Fi", "Playing Guitar", "Hiking", "Photography"];
 
 export const projects: Project[] = [
   {
-    title: "Project Phoenix",
-    description: "A full-stack web application for project management, built with Next.js, TypeScript, and a GraphQL API. Features real-time collaboration and a modern, responsive UI.",
-    tags: ["Next.js", "TypeScript", "GraphQL", "PostgreSQL", "Docker"],
+    title: "SQLcl MCP Server",
+    description: "Implemented a secure MCP Server using the MCP Java SDK to enable LLM access to Oracle Databases, improving developer productivity by 30% and achieving broad adoption among Oracle users.",
+    tags: ["Java", "MCP", "Oracle", "SQL"],
+    image: "project5",
+    liveUrl: "https://medium.com/@hamza.eraoui/sqlcl-mcp-server-tips-tricks-and-use-cases-d9e3f533a41e",
+    problem: "There was no secure or standardized way for Large Language Models to interact with Oracle Databases, limiting the potential for AI-driven database management.",
+    contribution: "I implemented a secure MCP Server from the ground up using the Java SDK. This enabled LLMs to safely access Oracle databases, which improved developer productivity by 30% and led to broad adoption among Oracle users.",
+  },
+  {
+    title: "Database Package Manager",
+    description: "Developed the first package manager in the database ecosystem, enabling full lifecycle management of SQL and PL/SQL applications through a state-of-the-art architecture that securely isolates and deploys third-party dependencies within the database.",
+    tags: ["SQL", "PL/SQL", "Architecture", "DevOps"],
     image: "project1",
-    githubUrl: "https://github.com/Eraoui909/phoenix",
-    liveUrl: "https://phoenix.eraoui.dev",
-    logo: "/images/logos/phoenix-logo.svg",
-    problem: "Teams struggled with scattered project data and poor collaboration. The goal was to centralize everything into one intuitive platform.",
-    contribution: "As the lead architect, I designed the full-stack architecture, implemented the GraphQL API, and mentored the frontend team on React best practices. I also set up the CI/CD pipeline.",
-    stars: 1200,
-    forks: 345,
+    problem: "The database ecosystem lacked a package manager, making it difficult to manage dependencies and application lifecycles for SQL and PL/SQL.",
+    contribution: "I designed and developed the first-ever package manager for the database ecosystem. This involved creating a state-of-the-art architecture for secure dependency isolation and deployment.",
   },
   {
-    title: "CodeCraft IDE",
-    description: "An open-source, lightweight code editor extension for VSCode designed to streamline frontend development with custom snippets and theming.",
-    tags: ["VSCode Extension", "TypeScript", "Webviews"],
+    title: "Smol AI Developer",
+    description: "Developed an AI agent that acts as a Junior Java Developer within a large-scale codebase, performing code reviews and generating unit and integration tests to achieve 80% code coverage. Automated repetitive development tasks using Java, OpenAI SDK, and Maven.",
+    tags: ["AI", "Java", "OpenAI", "Maven"],
     image: "project2",
-    githubUrl: "https://github.com/Eraoui909/codecraft",
-    logo: "/images/logos/codecraft-logo.svg",
-    problem: "Repetitive coding tasks and inconsistent theming were slowing down development. I wanted to create a tool to automate snippets and enforce a consistent look and feel.",
-    contribution: "I developed the core extension using TypeScript and the VSCode API. A key challenge was creating a performant webview-based theme customizer, which I solved by optimizing the rendering process.",
-    stars: 850,
-    forks: 120,
-  },
-  {
-    title: "QuantumLeap.js",
-    description: "An experimental JavaScript library for creating declarative, physics-based animations on the web. Explores the art of software and motion design.",
-    tags: ["JavaScript", "Animation", "Library", "Open Source"],
-    image: "project4",
-    githubUrl: "https://github.com/Eraoui909/quantumleap",
-    logo: "/images/logos/quantumleap-logo.svg",
-    problem: "Creating natural, physics-based web animations was often complex and verbose. QuantumLeap.js provides a simple, declarative API to make it accessible to more developers.",
-    contribution: "I wrote the entire physics engine from scratch, focusing on performance and ease of use. I also authored the documentation and created a gallery of examples to showcase its capabilities.",
-    stars: 2500,
-    forks: 450,
+    githubUrl: "https://github.com/Eraoui909/smol-ai-developer",
+    problem: "Repetitive development tasks like code reviews and writing basic tests were time-consuming. The goal was to automate these to increase efficiency and code coverage.",
+    contribution: "I developed an AI agent that functions as a junior Java developer. It automates code reviews and generates tests to achieve 80% coverage, using Java, the OpenAI SDK, and Maven.",
   },
 ];
 
 export const experience: Experience[] = [
   {
-    role: "Senior Software Engineer",
-    company: "Innovate Inc.",
-    period: "2021 - Present",
-    description: "Led the development of a high-traffic e-commerce platform, improving performance by 30%. Mentored junior developers and championed best practices in code quality and testing.",
-  },
-  {
     role: "Software Engineer",
-    company: "Tech Solutions Co.",
+    company: "Oracle",
+    period: "Feb 2023 - Present",
+    description: "Implemented a Model Context Protocol (MCP) Server using Java SDK, enabling Oracle database access via Large Language Models. Increased test code coverage by 80% and designed a new database development framework, resulting in a granted patent. Led collaboration across 3 teams for our new framework and mentored 4 interns who became full-time engineers.",
+  },
+  {
+    role: "Master of data science and intelligent systems",
+    company: "Faculty of Science and Technologies",
+    period: "2021 - 2023",
+    description: "Focused on advanced topics in data science and artificial intelligence, including machine learning, natural language processing, and system design.",
+  },
+  {
+    role: "Bachelor of Computer Science",
+    company: "Faculty of Science and Technologies",
     period: "2018 - 2021",
-    description: "Developed and maintained several client-facing web applications using React and Node.js. Collaborated in an agile team to deliver features from concept to deployment.",
-  },
-  {
-    role: "Junior Developer",
-    company: "Code Wizards",
-    period: "2016 - 2018",
-    description: "Started my professional journey building responsive websites and learning the fundamentals of web development and software engineering principles.",
-  },
-  {
-    role: "B.S. in Computer Science",
-    company: "University of Technology",
-    period: "2012 - 2016",
-    description: "Graduated with honors, focusing on algorithms, data structures, and artificial intelligence. Active member of the university coding club.",
+    description: "Gained a strong foundation in computer science fundamentals, including algorithms, data structures, and software engineering principles.",
   },
 ];
 

@@ -56,10 +56,10 @@ export function Projects() {
                   </Button>
                 )}
                 {project.liveUrl && (
-                  <Button variant="default" asChild>
+                  <Button asChild>
                     <Link href={project.liveUrl} target="_blank">
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
+                       Try it here
                     </Link>
                   </Button>
                 )}
