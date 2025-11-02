@@ -1,3 +1,4 @@
+
 import type { Experience, Project, Service } from "@/lib/types";
 import { Code, PenTool, Server, Github, Linkedin, Mail, Globe } from "lucide-react";
 
@@ -11,7 +12,7 @@ export const personalData = {
       { name: "GitHub", url: "https://github.com/Eraoui909", icon: Github },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/hamza-eraoui/", icon: Linkedin },
       { name: "Email", url: "mailto:hamzaeraoui2000@gmail.com", icon: Mail },
-      { name: "Website", url: "https://hamzaeraoui.vercel.app", icon: Globe }
+      { name: "Website", url: "https://hamzaeraoui.com", icon: Globe }
     ],
   },
   resumeUrl: "/resume",
