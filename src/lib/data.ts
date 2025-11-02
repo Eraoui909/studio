@@ -1,6 +1,6 @@
 
 import type { Experience, Project, Service, SkillCategory } from "@/lib/types";
-import { Code, PenTool, Server, Github, Linkedin, Mail, Globe } from "lucide-react";
+import { Code, Server, Github, Linkedin, Mail, Globe, BrainCircuit } from "lucide-react";
 
 export const personalData = {
   name: "Hamza Eraoui",
@@ -96,9 +96,9 @@ export const services: Service[] = [
     icon: Code,
   },
   {
-    title: "Technical Writing",
-    description: "Crafting clear, concise, and comprehensive documentation, blog posts, and tutorials for developer audiences.",
-    icon: PenTool,
+    title: "AI Agent & MCP Development",
+    description: "Building intelligent AI agents and robust MCP servers to interact with your data and services, enabling advanced automation.",
+    icon: BrainCircuit,
   },
   {
     title: "System Design Consulting",
