@@ -12,6 +12,8 @@ export default function ResumePage() {
     window.print();
   };
 
+  const resumeBio = "A results-driven Software Engineer with 2+ years of experience at Oracle, specializing in AI-driven developer tools. Proven ability to enhance developer productivity by 30% through the creation of secure, large-scale AI solutions. Seeking a full-time role to leverage expertise in AI agents and system architecture to build impactful, intelligent products.";
+
   return (
     <div className="container mx-auto max-w-4xl px-4 py-20 sm:py-32 md:px-8">
       <style jsx global>{`
@@ -64,6 +66,11 @@ export default function ResumePage() {
             ))}
           </div>
         </header>
+
+        <section className="mt-8">
+          <h3 className="text-2xl font-bold font-headline mb-4 border-b pb-2 text-primary">Summary</h3>
+          <p className="text-sm text-muted-foreground">{resumeBio}</p>
+        </section>
 
         <section className="mt-8">
           <h3 className="text-2xl font-bold font-headline mb-6 border-b pb-2 text-primary">Experience</h3>

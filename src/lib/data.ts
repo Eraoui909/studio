@@ -5,7 +5,7 @@ import { Code, PenTool, Server, Github, Linkedin, Mail, Globe } from "lucide-rea
 export const personalData = {
   name: "Hamza Eraoui",
   tagline: "Software Engineer",
-  bio: "A results-driven Software Engineer with 2+ years of experience at Oracle, specializing in AI-driven developer tools. Proven ability to enhance developer productivity by 30% through the creation of secure, large-scale AI solutions. Seeking a full-time role to leverage expertise in AI agents and system architecture to build impactful, intelligent products.",
+  bio: "I build pixel-perfect, engaging, and accessible digital experiences. As a software engineer, I specialize in creating robust and scalable web applications. My passion lies in solving complex problems and turning ideas into reality through code.",
   contact: {
     email: "hamzaeraoui2000@gmail.com",
     social: [
