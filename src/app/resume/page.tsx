@@ -1,7 +1,7 @@
 
 'use client';
 
-import { personalData, experience, skills } from "@/lib/data";
+import { personalData, experience, skills, hobbies } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -115,6 +115,15 @@ export default function ResumePage() {
                         </div>
                         <p className="text-sm text-muted-foreground">{item.period}</p>
                     </div>
+                ))}
+            </div>
+        </section>
+
+        <section className="mt-8">
+            <h3 className="text-2xl font-bold font-headline mb-4 border-b pb-2 text-primary">Hobbies & Interests</h3>
+            <div className="flex flex-wrap gap-2">
+                {hobbies.map((hobby) => (
+                    <Badge key={hobby} variant="secondary">{hobby}</Badge>
                 ))}
             </div>
         </section>

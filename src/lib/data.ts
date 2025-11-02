@@ -37,7 +37,7 @@ export const skills: SkillCategory[] = [
   },
 ];
 
-export const hobbies = ["Reading Sci-Fi", "Playing Guitar", "Hiking", "Photography"];
+export const hobbies = ["8 Ball Pool", "Chess", "Football"];
 
 export const projects: Project[] = [
   {
