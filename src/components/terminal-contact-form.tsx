@@ -22,7 +22,7 @@ type HistoryItem = {
 const commands: Record<string, string> = {
   help: "Available commands: whoami, contact, echo, help, email, skills, hobbies, clear",
   email: personalData.contact.email,
-  skills: skillsData.join(", "),
+  skills: skillsData.map(s => s.items).flat().join(", "),
   hobbies: hobbiesData.join(", "),
 };
 
@@ -57,10 +57,6 @@ export function TerminalContactForm() {
   const endOfHistoryRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    inputRef.current?.focus();
-  }, [step]);
-
-  React.useEffect(() => {
     endOfHistoryRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
@@ -77,8 +73,10 @@ export function TerminalContactForm() {
       reset();
       return;
     }
-
-    if (commands[commandKey]) {
+     if (commandKey === 'skills') {
+      const allSkills = skillsData.map(cat => `${cat.title}: ${cat.items.join(', ')}`).join('\n');
+      newHistory.push({ id: Date.now() + 1, type: "output", content: allSkills });
+    } else if (commands[commandKey]) {
       newHistory.push({
         id: Date.now() + 1,
         type: "output",
@@ -203,7 +201,7 @@ export function TerminalContactForm() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className={cn({
+                className={cn("whitespace-pre-wrap", {
                   "text-muted-foreground": item.type === "output",
                   "text-destructive": item.type === "error",
                 })}
