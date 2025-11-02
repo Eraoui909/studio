@@ -101,8 +101,8 @@ export const services: Service[] = [
     icon: BrainCircuit,
   },
   {
-    title: "System Design Consulting",
-    description: "Advising on scalable, resilient, and cost-effective system architectures for modern applications.",
+    title: "Low-Code/No-Code Development",
+    description: "Consulting and development services for Low-Code/No-Code platforms, with a special focus on Oracle APEX.",
     icon: Server,
   },
 ];
