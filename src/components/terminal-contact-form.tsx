@@ -49,6 +49,8 @@ export function TerminalContactForm() {
   const [step, setStep] = React.useState(0);
   const [history, setHistory] = React.useState<HistoryItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
+  const [isFocused, setIsFocused] = React.useState(false);
+
   const { register, handleSubmit, trigger, formState: { errors }, reset, setValue } = useForm<ContactFormInput>({
     resolver: zodResolver(ContactFormInputSchema),
   });
@@ -228,6 +230,8 @@ export function TerminalContactForm() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 placeholder={currentStepInfo.placeholder}
                 className="flex-1 bg-transparent border-none outline-none resize-none"
                 rows={1}
@@ -239,16 +243,20 @@ export function TerminalContactForm() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 placeholder={currentStepInfo?.placeholder || "Type a command..."}
                 className="flex-1 bg-transparent border-none outline-none"
                 autoComplete="off"
             />
         )}
-        <motion.div
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 1, repeat: Infinity }}
-            className="w-2 h-4 bg-primary"
-        />
+        {isFocused && (
+            <motion.div
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="w-2 h-4 bg-primary"
+            />
+        )}
       </div>
     </div>
   );
