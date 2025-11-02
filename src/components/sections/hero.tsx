@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { personalData } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 import { Eye, Send } from "lucide-react";
+import { ImageWithFallback } from "../image-with-fallback";
 
 export function Hero() {
   const profileImage = PlaceHolderImages.find(p => p.id === 'profile');
@@ -40,8 +40,9 @@ export function Hero() {
           {profileImage && (
             <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-20 transform -translate-x-4 -translate-y-4"></div>
-              <Image
+              <ImageWithFallback
                 src={profileImage.imageUrl}
+                fallbackSrc={`https://picsum.photos/seed/1/400/400`}
                 alt={profileImage.description}
                 width={400}
                 height={400}

@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star, GitFork, ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { ImageWithFallback } from "../image-with-fallback";
 
 export function OpenSource() {
   const storyImage = PlaceHolderImages.find((p) => p.id === 'opensource-story');
@@ -33,8 +34,9 @@ export function OpenSource() {
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="relative col-span-1 hidden lg:block">
           {storyImage && (
-            <Image
+            <ImageWithFallback
               src={storyImage.imageUrl}
+              fallbackSrc={`https://picsum.photos/seed/opensource/600/800`}
               alt={storyImage.description}
               fill
               className="rounded-lg object-cover"
@@ -72,8 +74,9 @@ export function OpenSource() {
                     <div className="grid grid-cols-1 md:grid-cols-3">
                        {projectImage && (
                         <div className="md:col-span-1">
-                          <Image
+                          <ImageWithFallback
                             src={projectImage.imageUrl}
+                            fallbackSrc={`https://picsum.photos/seed/project-${index}/600/400`}
                             alt={projectImage.description}
                             width={600}
                             height={400}

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
+import { ImageWithFallback } from "../image-with-fallback"
 
 export function Projects() {
   return (
@@ -19,14 +20,15 @@ export function Projects() {
         </p>
       </div>
       <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const projectImage = PlaceHolderImages.find(p => p.id === project.image);
           return (
             <Card key={project.title} className="flex flex-col overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
               {projectImage && (
                 <div className="aspect-video overflow-hidden">
-                  <Image
+                  <ImageWithFallback
                     src={projectImage.imageUrl}
+                    fallbackSrc={`https://picsum.photos/seed/${index+1}/600/400`}
                     alt={projectImage.description}
                     width={600}
                     height={400}
