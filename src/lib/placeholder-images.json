@@ -3,43 +3,43 @@
     {
       "id": "profile",
       "description": "Portrait of Hamza Eraoui, a software engineer, smiling.",
-      "imageUrl": "/images/hamza-eraoui.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1583195763986-0231686dcd43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE5OTU4ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "project1",
       "description": "Screenshot of a modern web application dashboard with charts and graphs.",
-      "imageUrl": "/images/project1.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1686061593269-420785fb8fa0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGFzaGJvYXJkJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2MjAzNjcyNnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dashboard analytics"
     },
     {
       "id": "project2",
       "description": "Image of a code editor with highlighted syntax, representing a development environment.",
-      "imageUrl": "/images/project2.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1625535069654-cfeb8f829088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb2RlJTIwZWRpdG9yfGVufDB8fHx8MTc2MjAzMTA0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "code editor"
     },
     {
       "id": "project3",
       "description": "Mockup of a sleek mobile application interface shown on a smartphone.",
-      "imageUrl": "/images/project3.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1551650975-87deedd944c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzYyMDQzNjQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mobile app"
     },
     {
       "id": "project4",
       "description": "An abstract geometric pattern representing complex system design.",
-      "imageUrl": "/images/project4.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1700619663145-34b53a04d940?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzeXN0ZW0lMjBkZXNpZ258ZW58MHx8fHwxNzYyMTA4ODg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "system design"
     },
     {
       "id": "project5",
       "description": "Abstract visualization of an AI agent working with Java code.",
-      "imageUrl": "/images/project5.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxBSSUyMGFnZW50fGVufDB8fHx8MTc2MjEwODg4NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "AI agent"
     },
     {
       "id": "opensource-story",
       "description": "An abstract background image for the open source section, conveying a sense of community and collaboration.",
-      "imageUrl": "/images/opensource-story.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1658734029438-d97357737bf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb21tdW5pdHklMjBjb2RlfGVufDB8fHx8MTc2MjEwODg4NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "community code"
     }
   ]
