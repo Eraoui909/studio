@@ -28,12 +28,12 @@ export function Hero() {
                 View Resume
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            {/* <Button asChild variant="outline" size="lg">
               <Link href="#contact">
                 <Send className="mr-2 h-4 w-4" />
                 Get in Touch
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
         <div className="flex justify-center lg:justify-end">
