@@ -73,9 +73,6 @@ export function Hero() {
                       className="h-10 w-10"
                     />
                 </div>
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 px-2 py-1 bg-card rounded-full shadow-lg">
-                  <span className="text-xs font-code text-primary">Happy Face</span>
-                </div>
               </motion.div>
             </div>
           )}
