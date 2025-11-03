@@ -51,3 +51,10 @@ export type SkillCategory = {
   title: string;
   items: string[];
 };
+
+export type ArchiveItem = {
+  title: string;
+  description: string;
+  url: string;
+  tags: string[];
+};

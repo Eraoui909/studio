@@ -14,9 +14,9 @@ const navLinks = [
   { href: "/#projects", label: "Projects", isSection: true },
   { href: "/blog", label: "Blog" },
   { href: "/opensource", label: "Open Source" },
+  { href: "/archive", label: "Archive" },
   { href: "/resume", label: "Resume" },
   { href: "/#services", label: "Services", isSection: true },
-  { href: "/#contact", label: "Contact", isSection: true },
 ]
 
 export function Header() {
