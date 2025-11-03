@@ -53,32 +53,35 @@ export default function ArchivePage() {
         </p>
       </div>
 
-      <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div className="mb-12 flex flex-col md:flex-row gap-4 justify-center items-center">
         <Input
           type="text"
-          placeholder="Search resources..."
+          placeholder="Search..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="max-w-xs"
+          className="max-w-xs h-9"
         />
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
-        <Button
-          variant={!selectedTag ? 'default' : 'secondary'}
-          onClick={() => setSelectedTag(null)}
-        >
-          All
-        </Button>
-        {allTags.map((tag) => (
-          <Button
-            key={tag}
-            variant={selectedTag === tag ? 'default' : 'secondary'}
-            onClick={() => setSelectedTag(tag)}
-          >
-            {tag}
-          </Button>
-        ))}
+        <div className="flex flex-wrap justify-center gap-2">
+            <Button
+              size="sm"
+              variant={!selectedTag ? 'default' : 'secondary'}
+              onClick={() => setSelectedTag(null)}
+              className="h-9"
+            >
+              All
+            </Button>
+            {allTags.map((tag) => (
+              <Button
+                key={tag}
+                size="sm"
+                variant={selectedTag === tag ? 'default' : 'secondary'}
+                onClick={() => setSelectedTag(tag)}
+                className="h-9"
+              >
+                {tag}
+              </Button>
+            ))}
+        </div>
       </div>
 
       <div className="border rounded-lg overflow-hidden">
