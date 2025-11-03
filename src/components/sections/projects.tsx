@@ -1,3 +1,4 @@
+
 import Image from "next/image"
 import Link from "next/link"
 import { projects } from "@/lib/data"
@@ -7,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
 import { ImageWithFallback } from "../image-with-fallback"
+import { MiniTerminalDemo } from "../mini-terminal-demo"
 
 export function Projects() {
   return (
@@ -24,19 +26,21 @@ export function Projects() {
           const projectImage = PlaceHolderImages.find(p => p.id === project.image);
           return (
             <Card key={project.title} className="flex flex-col overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
-              {projectImage && (
-                <div className="aspect-video overflow-hidden">
-                  <ImageWithFallback
-                    src={projectImage.imageUrl}
-                    fallbackSrc={`https://picsum.photos/seed/${index+1}/600/400`}
-                    alt={projectImage.description}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-full"
-                    data-ai-hint={projectImage.imageHint}
-                  />
-                </div>
-              )}
+              <div className="aspect-video overflow-hidden bg-card">
+                  {project.title === "SQLcl MCP Server" ? (
+                    <MiniTerminalDemo />
+                  ) : projectImage && (
+                    <ImageWithFallback
+                      src={projectImage.imageUrl}
+                      fallbackSrc={`https://picsum.photos/seed/${index + 1}/600/400`}
+                      alt={projectImage.description}
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
+                      data-ai-hint={projectImage.imageHint}
+                    />
+                  )}
+              </div>
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">{project.title}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
