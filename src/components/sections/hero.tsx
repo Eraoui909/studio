@@ -47,7 +47,7 @@ export function Hero() {
                 width={400}
                 height={400}
                 priority
-                className="rounded-full object-cover border-4 border-background shadow-lg"
+                className="relative rounded-full object-cover border-4 border-background shadow-lg"
                 data-ai-hint={profileImage.imageHint}
               />
             </div>
