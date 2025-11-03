@@ -23,6 +23,10 @@ export default function ArchivePage() {
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  React.useEffect(() => {
+    document.title = 'Archive | Hamza Eraoui';
+  }, []);
+
   return (
     <div className="container mx-auto max-w-5xl px-4 py-20 sm:py-32 md:px-8">
       <div className="text-center mb-12">
@@ -87,4 +91,3 @@ export default function ArchivePage() {
     </div>
   );
 }
-

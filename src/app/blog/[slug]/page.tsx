@@ -1,6 +1,49 @@
 import { notFound } from "next/navigation";
 import { getAllPostSlugs, getPostData } from "@/lib/posts";
 import { format } from 'date-fns';
+import type { Metadata, ResolvingMetadata } from 'next'
+import { personalData } from "@/lib/data";
+
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPostData(params.slug);
+
+  if (!post) {
+    return {
+      title: 'Not Found',
+      description: "The page you're looking for does not exist.",
+    };
+  }
+ 
+  const previousImages = (await parent).openGraph?.images || []
+ 
+  return {
+    title: `${post.title} | ${personalData.name}`,
+    description: post.description,
+    openGraph: {
+        title: post.title,
+        description: post.description,
+        type: 'article',
+        url: `https://hamzaeraoui.com/blog/${post.slug}`,
+        images: ['/images/opensource-story.jpeg', ...previousImages],
+        authors: [personalData.name],
+        publishedTime: post.date,
+    },
+     twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: ['/images/opensource-story.jpeg'],
+      creator: '@' + personalData.name.replace(/\s/g, ''),
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const paths = getAllPostSlugs();

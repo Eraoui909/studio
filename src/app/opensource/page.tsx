@@ -1,5 +1,12 @@
 
 import { OpenSource } from "@/components/sections/open-source";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Open Source | Hamza Eraoui',
+  description: 'A showcase of open source projects and contributions by Hamza Eraoui.',
+};
+
 
 export default function OpenSourcePage() {
   return (

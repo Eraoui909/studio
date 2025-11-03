@@ -3,6 +3,12 @@ import { getSortedPostsData } from "@/lib/posts";
 import { Card, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Blog | Hamza Eraoui',
+  description: 'Technical articles, personal reflections, and engineering stories from Hamza Eraoui.',
+}
 
 export default function BlogPage() {
   const blogPosts = getSortedPostsData();

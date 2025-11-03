@@ -5,6 +5,7 @@ import { personalData, experience, skills, hobbies } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import React from "react";
 
 export default function ResumePage() {
 
@@ -13,6 +14,10 @@ export default function ResumePage() {
   };
 
   const resumeBio = "A results-driven Software Engineer with 2+ years of experience at Oracle, specializing in AI-driven developer tools. Proven ability to enhance developer productivity by 30% through the creation of secure, large-scale AI solutions. Seeking a full-time role to leverage expertise in AI agents and system architecture to build impactful, intelligent products.";
+
+  React.useEffect(() => {
+    document.title = 'Resume | Hamza Eraoui';
+  }, []);
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-20 sm:py-32 md:px-8">
