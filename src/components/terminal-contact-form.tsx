@@ -13,6 +13,7 @@ import { type ContactFormInput, ContactFormInputSchema } from "@/lib/types";
 
 type HistoryItem = {
   id: number;
+  
   type: "input" | "output" | "error";
   prefix?: string;
   content: string;
@@ -55,12 +56,18 @@ export function TerminalContactForm() {
   });
   const { toast } = useToast();
   const inputRef = React.useRef<HTMLInputElement & HTMLTextAreaElement>(null);
-  const endOfHistoryRef = React.useRef<HTMLDivElement>(null);
+  const scrollAreaRef = React.useRef<HTMLDivElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
 
+  // Scroll only the internal scroll area when history grows, avoid page jump on initial load
   React.useEffect(() => {
-    endOfHistoryRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (!scrollAreaRef.current) return;
+    if (history.length === 0) return; // don't scroll on initial mount
+    scrollAreaRef.current.scrollTo({
+      top: scrollAreaRef.current.scrollHeight,
+      behavior: "smooth",
+    });
   }, [history]);
   
   const focusInput = () => {
@@ -194,7 +201,7 @@ export function TerminalContactForm() {
       className="font-code p-4 sm:p-6 md:p-8 bg-card border rounded-lg shadow-lg w-full max-w-3xl mx-auto cursor-text"
       onClick={focusInput}
     >
-      <div className="h-64 overflow-y-auto">
+      <div ref={scrollAreaRef} className="h-64 overflow-y-auto">
         {history.map((item) => (
           <div key={item.id} className="mb-2 last:mb-0">
             {item.type === "input" ? (
@@ -217,7 +224,6 @@ export function TerminalContactForm() {
             )}
           </div>
         ))}
-         <div ref={endOfHistoryRef} />
       </div>
 
       <div className="flex items-center gap-2 mt-4">
