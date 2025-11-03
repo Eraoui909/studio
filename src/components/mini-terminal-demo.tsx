@@ -5,7 +5,7 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 
-const commandToType = "sql -mcp";
+const commandToType = "s ql -mcp";
 
 export function MiniTerminalDemo() {
   const [typedCommand, setTypedCommand] = React.useState('');
@@ -14,7 +14,7 @@ export function MiniTerminalDemo() {
   React.useEffect(() => {
     let currentIndex = 0;
     const interval = setInterval(() => {
-      if (currentIndex < commandToType.length) {
+      if (currentIndex < commandToType.length -  1) {
         setTypedCommand((prev) => prev + commandToType[currentIndex]);
         currentIndex++;
       } else {
