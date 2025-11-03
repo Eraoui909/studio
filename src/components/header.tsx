@@ -3,12 +3,14 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, Command as CommandIcon } from "lucide-react"
+import { Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { ImageWithFallback } from "./image-with-fallback"
 
 const navLinks = [
   { href: "/#projects", label: "Projects", isSection: true },
@@ -22,28 +24,14 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  const [isTerminalOpen, setIsTerminalOpen] = React.useState(false)
   const pathname = usePathname()
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setIsTerminalOpen((open) => !open)
-      }
-    };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
-
   const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
-    // If we are on a different page, let the default Link behavior happen.
     if (pathname !== '/') {
         setIsMenuOpen(false);
         return;
     }
 
-    // If we are on the homepage and the link is a section link
     if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.substring(2);
@@ -62,7 +50,13 @@ export function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-2xl font-bold text-primary">:)</span>
+            <Image
+              src="/web-app-manifest-192x192.png"
+              alt="Site Logo"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
             <span className="font-bold font-headline sm:inline-block">
               Eraoui.dev
             </span>
@@ -89,7 +83,11 @@ export function Header() {
            <Button
             variant="outline"
             className="hidden sm:flex"
-            onClick={() => setIsTerminalOpen(true)}
+            onClick={() => {
+              // This is a placeholder for opening the terminal.
+              // The actual terminal logic is in the Terminal component itself.
+              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+            }}
           >
             <span className="text-sm text-muted-foreground">Cmd + K</span>
           </Button>
@@ -107,7 +105,13 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
-                <span className="text-2xl font-bold text-primary">:)</span>
+                 <Image 
+                  src="/web-app-manifest-192x192.png"
+                  alt="Site Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
                 <span className="ml-2 font-bold font-headline">Eraoui.dev</span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
