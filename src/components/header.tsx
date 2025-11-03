@@ -10,7 +10,6 @@ import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { ImageWithFallback } from "./image-with-fallback"
 
 const navLinks = [
   { href: "/#projects", label: "Projects", isSection: true },
