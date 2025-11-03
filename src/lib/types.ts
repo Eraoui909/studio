@@ -22,6 +22,7 @@ export type BlogPost = {
   date: string;
   slug: string;
   content: string;
+  readingTime: number;
   views?: number;
   likes?: number;
 };
