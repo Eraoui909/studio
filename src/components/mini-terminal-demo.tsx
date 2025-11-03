@@ -3,20 +3,31 @@
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 
 const commandToType = "sql -mcp";
 
 export function MiniTerminalDemo() {
-  const [history, setHistory] = React.useState<string[]>([]);
+  const [typedCommand, setTypedCommand] = React.useState('');
+  const [output, setOutput] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const commandOutput = `---------- MCP SERVER STARTUP ----------
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex < commandToType.length) {
+        setTypedCommand((prev) => prev + commandToType[currentIndex]);
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+        const commandOutput = `---------- MCP SERVER STARTUP ----------
 MCP Server started successfully on ${format(new Date(), 'E MMM dd HH:mm:ss OOOO yyyy')}
 Press Ctrl+C to stop the server
 ----------------------------------------`;
-    setHistory([`> ${commandToType}`, commandOutput]);
+        setOutput(commandOutput);
+      }
+    }, 150); // Adjust typing speed here (in ms)
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -33,16 +44,17 @@ Press Ctrl+C to stop the server
       </div>
       <div className="p-4 h-full overflow-y-auto text-[#d4d4d4]">
         <div className="whitespace-pre-wrap">
-          {history.map((line, index) => (
-            <div key={index}>{line}</div>
-          ))}
+          <div>{`> ${typedCommand}`}</div>
+          {output && <div>{output}</div>}
         </div>
         <div className="flex items-center gap-2">
-            <motion.div
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="w-2 h-4 bg-green-400"
-            />
+            {!output && (
+                 <motion.div
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                    className="w-2 h-4 bg-green-400"
+                />
+            )}
           </div>
       </div>
     </div>
