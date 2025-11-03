@@ -5,6 +5,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Terminal } from '@/components/terminal';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: 'Hamza Eraoui | Software Engineer',
@@ -38,6 +39,7 @@ export default function RootLayout({
           </div>
           <Toaster />
           <Terminal />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
