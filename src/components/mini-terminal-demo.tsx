@@ -4,22 +4,9 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
-const commandToType = "run-sql 'SELECT * FROM employees WHERE ROWNUM <= 3;'";
-const commandOutput = `
-SQLcl: Release 25.2 Production on Tue Oct 22 14:32:01 2025
-
-Copyright (c) 1982, 2025, Oracle.  All rights reserved.
-
-Connected to:
-Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
-
-  EMPLOYEE_ID FIRST_NAME           LAST_NAME                 EMAIL
-_____________ ____________________ _________________________ _________________________
-          100 Steven               King                      SKING
-          101 Neena                Kochhar                   NKOCHHAR
-          102 Lex                  De Haan                   LDEHAAN
-`;
+const commandToType = "sql -mcp";
 
 export function MiniTerminalDemo() {
   const [inputValue, setInputValue] = React.useState('');
@@ -34,6 +21,12 @@ export function MiniTerminalDemo() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      const commandOutput = `
+---------- MCP SERVER STARTUP ----------
+MCP Server started successfully on ${format(new Date(), 'E MMM dd HH:mm:ss OOOO yyyy')}
+Press Ctrl+C to stop the server
+----------------------------------------
+`;
       if (inputValue.trim() === commandToType) {
         setHistory((prev) => [...prev, `> ${inputValue}`]);
         setIsCommandRunning(true);
@@ -109,7 +102,7 @@ export function MiniTerminalDemo() {
         {isCommandRunning && (
           <div className="flex items-center gap-2">
             <span className="text-green-400">&gt;</span>
-            <span>Executing query...</span>
+            <span>Starting server...</span>
             <motion.div
               animate={{ opacity: [0, 1, 0] }}
               transition={{ duration: 1, repeat: Infinity }}
