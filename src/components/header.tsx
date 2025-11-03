@@ -16,7 +16,7 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
   { href: "/opensource", label: "Open Source" },
   { href: "/archive", label: "Archive" },
-  { href: "/resume", label: "Resume" },
+  { href: "/resume", label: "About Me" },
   { href: "/#contact", label: "Contact", isSection: true },
   { href: "/#services", label: "Services", isSection: true },
 ]

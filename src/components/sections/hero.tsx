@@ -30,7 +30,7 @@ export function Hero() {
             <Button asChild size="lg">
               <Link href={personalData.resumeUrl}>
                 <Eye className="mr-2 h-4 w-4" />
-                View Resume
+                About Me
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
