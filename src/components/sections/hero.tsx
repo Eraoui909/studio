@@ -64,9 +64,9 @@ export function Hero() {
                   ease: "linear",
                 }}
               >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 bg-background/80 backdrop-blur-sm rounded-full shadow-lg">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full">
                    <Image
-                      src="/logos/web-app-manifest-192x192.png"
+                      src="/logos/happy-face-bg-rm.png"
                       alt="Site Logo"
                       width={40}
                       height={40}

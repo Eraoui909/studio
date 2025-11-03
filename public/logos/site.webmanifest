@@ -13,6 +13,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/happy-face-bg-rm.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "without background"
     }
   ],
   "theme_color": "#ffffff",
