@@ -16,7 +16,7 @@ const navLinks = [
   { href: "/opensource", label: "Open Source" },
   { href: "/resume", label: "Resume" },
   { href: "/#services", label: "Services", isSection: true },
-  // { href: "/#contact", label: "Contact", isSection: true },
+  { href: "/#contact", label: "Contact", isSection: true },
 ]
 
 export function Header() {
