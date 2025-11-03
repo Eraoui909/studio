@@ -24,29 +24,8 @@ const contactFlow = ai.defineFlow(
     outputSchema: z.void(),
   },
   async (input) => {
-    console.log('New contact form submission:');
-    console.log(`From: ${input.name} <${input.email}>`);
-    console.log(`Message: ${input.message}`);
-
-    // In a real application, you would use an email service here.
-    // For example, using a hypothetical 'email' plugin:
-    /*
-    await ai.tool('sendEmail').run({
-      to: personalData.contact.email,
-      subject: `New message from ${input.name} via your portfolio`,
-      body: `
-        You have a new contact form submission:
-
-        Name: ${input.name}
-        Email: ${input.email}
-
-        Message:
-        ${input.message}
-      `,
-    });
-    */
-
-    // For now, we just log to the console to show it's working.
-    // To implement actual email sending, you would need to integrate a service like Resend, SendGrid, or Nodemailer.
+    // This flow is for demonstration purposes.
+    // In a real application, you would integrate an email service here.
+    console.log('Contact form submission received:', input);
   }
 );

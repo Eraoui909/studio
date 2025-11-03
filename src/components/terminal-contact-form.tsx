@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { personalData, skills as skillsData, hobbies as hobbiesData } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { sendContactEmail } from "@/ai/flows/contact-flow";
 import { type ContactFormInput, ContactFormInputSchema } from "@/lib/types";
 
 
@@ -49,7 +48,7 @@ export function TerminalContactForm() {
   const [step, setStep] = React.useState(0);
   const [history, setHistory] = React.useState<HistoryItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [isInputFocused, setIsInputFocused] = React.useState(false);
 
   const { register, handleSubmit, trigger, formState: { errors }, reset, setValue } = useForm<ContactFormInput>({
     resolver: zodResolver(ContactFormInputSchema),
@@ -57,10 +56,17 @@ export function TerminalContactForm() {
   const { toast } = useToast();
   const inputRef = React.useRef<HTMLInputElement & HTMLTextAreaElement>(null);
   const endOfHistoryRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
 
   React.useEffect(() => {
     endOfHistoryRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
+  
+  const focusInput = () => {
+    inputRef.current?.focus();
+    setIsInputFocused(true);
+  }
 
   const handleCommand = (command: string) => {
     const newHistory: HistoryItem[] = [
@@ -95,28 +101,25 @@ export function TerminalContactForm() {
     setHistory(newHistory);
   };
 
-  const onFormSubmit: SubmitHandler<ContactFormInput> = async (data) => {
+  const onFormSubmit: SubmitHandler<ContactFormInput> = (data) => {
     const finalHistory: HistoryItem[] = [
       ...history,
       { id: Date.now(), type: "input", prefix: `> echo "${data.message}" > inbox.txt`, content: "" },
     ];
     
-    try {
-      await sendContactEmail(data);
-      finalHistory.push({ id: Date.now() + 1, type: "output", content: "✅ Message deployed to inbox." });
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      });
-    } catch (error) {
-      finalHistory.push({ id: Date.now() + 1, type: "error", content: "❌ Failed to send message." });
-       toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "Could not send message. Please try again later.",
-      });
-    }
+    const linkedInUrl = personalData.contact.social.find(s => s.name === 'LinkedIn')?.url;
 
+    const apologyMessage = "Apologies! This contact form is for demonstration purposes only, as I'm not running a backend email server just yet.";
+    const contactInstructions = `In the meantime, feel free to connect with me on LinkedIn or send me an email directly:\n\nLinkedIn: ${linkedInUrl || 'N/A'}\nEmail: ${personalData.contact.email}`;
+
+    finalHistory.push({ id: Date.now() + 1, type: "output", content: apologyMessage });
+    finalHistory.push({ id: Date.now() + 2, type: "output", content: contactInstructions });
+      
+    toast({
+      title: "Thanks for trying!",
+      description: "Please use the contact info provided to get in touch.",
+    });
+    
     setHistory(finalHistory);
     setStep(0);
     reset();
@@ -187,8 +190,9 @@ export function TerminalContactForm() {
 
   return (
     <div
+      ref={containerRef}
       className="font-code p-4 sm:p-6 md:p-8 bg-card border rounded-lg shadow-lg w-full max-w-3xl mx-auto cursor-text"
-      onClick={() => inputRef.current?.focus()}
+      onClick={focusInput}
     >
       <div className="h-64 overflow-y-auto">
         {history.map((item) => (
@@ -230,8 +234,8 @@ export function TerminalContactForm() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
                 placeholder={currentStepInfo.placeholder}
                 className="flex-1 bg-transparent border-none outline-none resize-none"
                 rows={1}
@@ -243,14 +247,14 @@ export function TerminalContactForm() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
                 placeholder={currentStepInfo?.placeholder || "Type a command..."}
                 className="flex-1 bg-transparent border-none outline-none"
                 autoComplete="off"
             />
         )}
-        {isFocused && (
+        {isInputFocused && (
             <motion.div
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{ duration: 1, repeat: Infinity }}
