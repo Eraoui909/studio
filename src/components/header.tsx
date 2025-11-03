@@ -51,7 +51,7 @@ export function Header() {
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Image
-              src="/web-app-manifest-192x192.png"
+              src="/logos/web-app-manifest-192x192.png"
               alt="Site Logo"
               width={32}
               height={32}
@@ -106,7 +106,7 @@ export function Header() {
             <SheetContent side="left">
               <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
                  <Image 
-                  src="/web-app-manifest-192x192.png"
+                  src="/logos/web-app-manifest-192x192.png"
                   alt="Site Logo"
                   width={32}
                   height={32}
