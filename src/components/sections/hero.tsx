@@ -1,4 +1,9 @@
+
+'use client';
+
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { personalData } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
@@ -47,9 +52,28 @@ export function Hero() {
                 width={400}
                 height={400}
                 priority
-                className="relative rounded-full object-cover border-4 border-background shadow-lg"
+                className="relative z-10 rounded-full object-cover border-4 border-background shadow-lg"
                 data-ai-hint={profileImage.imageHint}
               />
+              <motion.div
+                className="absolute top-0 left-0 h-full w-full"
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 25,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 bg-background/80 backdrop-blur-sm rounded-full shadow-lg">
+                   <Image
+                      src="/logos/web-app-manifest-192x192.png"
+                      alt="Site Logo"
+                      width={40}
+                      height={40}
+                      className="h-10 w-10"
+                    />
+                </div>
+              </motion.div>
             </div>
           )}
         </div>
