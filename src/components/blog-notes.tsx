@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -5,7 +6,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, PlusCircle } from "lucide-react";
 
 type Note = {
   id: string;
@@ -82,13 +83,7 @@ export function BlogNotes({ slug }: BlogNotesProps) {
               </div>
             </div>
              <Button variant="ghost" size="icon" onClick={addNote}>
-                <Image
-                    src="/logos/web-app-manifest-192x192.png"
-                    alt="Add Note"
-                    width={20}
-                    height={20}
-                    className="h-5 w-5"
-                />
+                <PlusCircle className="h-5 w-5" />
                <span className="sr-only">Add Note</span>
             </Button>
           </div>
@@ -125,3 +120,4 @@ export function BlogNotes({ slug }: BlogNotesProps) {
     </div>
   );
 }
+
