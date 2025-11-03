@@ -42,6 +42,7 @@ export const hobbies = ["Billiards", "Chess", "Football"];
 export const projects: Project[] = [
   {
     title: "SQLcl MCP Server",
+    logo: "/logos/sqlcl-logo.svg",
     description: "Implemented a secure MCP Server using the MCP Java SDK to enable LLM access to Oracle Databases, improving developer productivity by 30% and achieving broad adoption among Oracle users.",
     tags: ["Java", "MCP", "Oracle", "SQL"],
     image: "project5",
@@ -51,6 +52,7 @@ export const projects: Project[] = [
   },
   {
     title: "Database Package Manager",
+    logo: "/logos/db-pkg-mgr.png",
     description: "Developed the first package manager in the database ecosystem, enabling full lifecycle management of SQL and PL/SQL applications through a state-of-the-art architecture that securely isolates and deploys third-party dependencies within the database.",
     tags: ["SQL", "PL/SQL", "Architecture", "DevOps"],
     image: "project1",
@@ -59,6 +61,7 @@ export const projects: Project[] = [
   },
   {
     title: "Smol AI Developer",
+    logo: "/logos/smol-ai-dev.png",
     description: "Developed an AI agent that acts as a Junior Java Developer within a large-scale codebase, performing code reviews and generating unit and integration tests to achieve 80% code coverage. Automated repetitive development tasks using Java, OpenAI SDK, and Maven.",
     tags: ["AI", "Java", "OpenAI", "Maven"],
     image: "project2",

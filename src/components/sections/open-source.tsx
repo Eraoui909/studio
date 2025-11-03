@@ -106,14 +106,14 @@ export function OpenSource() {
                           </div>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                              {project.stars && <div className="flex items-center gap-1 text-sm text-muted-foreground">
                                 <Star className="h-4 w-4 text-primary" />
                                 <span>{project.stars?.toLocaleString()}</span>
-                              </div>
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                              </div>}
+                              {project.forks && <div className="flex items-center gap-1 text-sm text-muted-foreground">
                                 <GitFork className="h-4 w-4 text-primary" />
                                 <span>{project.forks?.toLocaleString()}</span>
-                              </div>
+                              </div>}
                             </div>
                             <div className="flex items-center space-x-2">
                                {project.githubUrl && (
