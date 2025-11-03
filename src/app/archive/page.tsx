@@ -53,7 +53,7 @@ export default function ArchivePage() {
         </p>
       </div>
 
-      <div className="mb-12 flex flex-col md:flex-row gap-4 justify-center items-center">
+      <div className="mb-12 flex flex-col items-center gap-4">
         <Input
           type="text"
           placeholder="Search..."
