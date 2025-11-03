@@ -21,17 +21,14 @@ export function MiniTerminalDemo() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const commandOutput = `
----------- MCP SERVER STARTUP ----------
+      const commandOutput = `---------- MCP SERVER STARTUP ----------
 MCP Server started successfully on ${format(new Date(), 'E MMM dd HH:mm:ss OOOO yyyy')}
 Press Ctrl+C to stop the server
-----------------------------------------
-`;
+----------------------------------------`;
       if (inputValue.trim() === commandToType) {
-        setHistory((prev) => [...prev, `> ${inputValue}`]);
+        setHistory((prev) => [...prev, `> ${inputValue}`, commandOutput]);
         setIsCommandRunning(true);
         setTimeout(() => {
-          setHistory((prev) => [...prev, commandOutput]);
           setIsCommandRunning(false);
           setInputValue('');
         }, 800);
@@ -100,9 +97,7 @@ Press Ctrl+C to stop the server
           </div>
         )}
         {isCommandRunning && (
-          <div className="flex items-center gap-2">
-            <span className="text-green-400">&gt;</span>
-            <span>Starting server...</span>
+           <div className="flex items-center gap-2">
             <motion.div
               animate={{ opacity: [0, 1, 0] }}
               transition={{ duration: 1, repeat: Infinity }}
