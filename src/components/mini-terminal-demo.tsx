@@ -25,7 +25,7 @@ Press Ctrl+C to stop the server
 ----------------------------------------`;
         setOutput(commandOutput);
       }
-    }, 150); // Adjust typing speed here (in ms)
+    }, 150);
 
     return () => clearInterval(interval);
   }, []);
