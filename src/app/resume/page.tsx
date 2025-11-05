@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import React from "react";
+import { LinkedinFollowButton } from "@/components/linkedin-follow-button";
 
 export default function ResumePage() {
 
@@ -16,7 +17,7 @@ export default function ResumePage() {
   const resumeBio = "A results-driven Software Engineer with 2+ years of experience at Oracle, specializing in AI-driven developer tools. Proven ability to enhance developer productivity by 30% through the creation of secure, large-scale AI solutions. Seeking a full-time role to leverage expertise in AI agents and system architecture to build impactful, intelligent products.";
 
   React.useEffect(() => {
-    document.title = 'Resume | Hamza Eraoui';
+    document.title = 'About Me | Hamza Eraoui';
   }, []);
 
   return (
@@ -41,17 +42,20 @@ export default function ResumePage() {
         }
       `}</style>
 
-      <div className="flex items-center justify-between mb-12 no-print">
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-12 no-print">
         <div>
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Resume
+            About Me
           </h1>
           <p className="mt-2 text-lg text-muted-foreground">My professional background and skills.</p>
         </div>
-        <Button onClick={handlePrint}>
-          <Download className="mr-2 h-4 w-4" />
-          Export to PDF
-        </Button>
+        <div className="flex items-center gap-4 mt-4 sm:mt-0">
+          <LinkedinFollowButton />
+          <Button onClick={handlePrint}>
+            <Download className="mr-2 h-4 w-4" />
+            Export to PDF
+          </Button>
+        </div>
       </div>
 
       <div className="printable-area p-4 sm:p-8 border rounded-lg bg-card text-card-foreground shadow-sm">
