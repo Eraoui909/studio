@@ -44,4 +44,10 @@ export const archiveItems: ArchiveItem[] = [
     url: "https://florian.github.io//xor-trick/",
     tags: ["CS"],
   },
+  {
+    title: "Java Design Patterns",
+    description: "Software design patterns, principles, and snippets",
+    url: "https://java-design-patterns.com/",
+    tags: ["JAVA", "CS"],
+  },
 ];
