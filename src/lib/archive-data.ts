@@ -38,4 +38,10 @@ export const archiveItems: ArchiveItem[] = [
     url: "https://courses.grainger.illinois.edu/cs225/fa2022/resources/stack-heap/",
     tags: ["CS", "Java"],
   },
+  {
+    title: "That XOR Trick",
+    description: "A good trick to solve some Coding Problems",
+    url: "https://florian.github.io//xor-trick/",
+    tags: ["CS"],
+  },
 ];
